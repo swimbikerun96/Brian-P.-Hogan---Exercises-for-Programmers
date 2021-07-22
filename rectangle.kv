@@ -1,0 +1,108 @@
+<MyGrid>:
+
+	canvas.before:
+		Color:
+			rgba: 52/255, 131/255, 235/255, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+	GridLayout:
+		size: root.width, root.height
+		cols: 1
+		
+		Label:
+			text: "Area of a Rectangular Room!"
+			italic: True
+			bold: True
+			font_size: 32
+		
+		GridLayout:
+			size: root.width, root.height
+			cols: 2			
+
+			Label:
+				text: "Length: "
+				font_size: 28
+				canvas.before:
+					Color:
+						rgba: 25/255,8/255,158/255,1
+					Rectangle:
+						size: self.size
+						pos: self.pos
+				
+			TextInput:
+				id: length
+				halign: "center"
+				multiline: False
+				focus: True
+				on_text_validate: root.segue1()
+				on_text:
+					root.populate1()
+					root.area()
+			
+			Label:
+				text: "Width: "
+				font_size: 28
+				canvas.before:
+					Color:
+						rgba: 25/255,8/255,158/255,1
+					Rectangle:
+						size: self.size
+						pos: self.pos
+			
+			TextInput:
+				id: width
+				halign: "center"
+				multiline: False
+				on_text_validate: root.segue2()
+				on_text:
+					root.populate2()
+					root.area()
+		
+			Label:
+				id: output1
+				font_size: 32
+				color: "#fbff12"
+			Label:
+				id: output2
+				font_size: 32
+				color: "#fbff12"
+			
+			Label:
+				text: "Select this Check Box for Metric Measurements: "
+			
+			Label:
+				text: "Select this Check Box for Imperial Measurements: "
+			
+			CheckBox:
+				id: metric
+				color: "#000000"
+				on_active: root.area()
+			
+			CheckBox:
+				id: imperial
+				color: "#000000"
+				on_active: root.area()
+		Label:
+			id: output3
+			font_size: 32
+			multiline: True
+			color: "#f5b105"
+			
+		GridLayout:
+			cols: 2
+			
+			Button:
+				id: convert
+				font_size: 35
+				background_color: 52/255, 131/255, 235/255, 1
+				background_normal: ""
+				on_press: root.convert()
+
+			Button:
+				id: reset
+				font_size: 35
+				background_color: 52/255, 131/255, 235/255, 1
+				background_normal: ""
+				on_release: root.reset()
