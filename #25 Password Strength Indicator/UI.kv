@@ -1,0 +1,22 @@
+<PassWordGrid>:
+	
+	BoxLayout:
+		size: root.width, root.height
+		orientation: 'vertical'
+		
+		Label:
+			font_size: 32
+			text: 'Please enter your password below:'
+		
+		TextInput:
+			id: input
+			font_size: 90
+			multiline: False
+			halign: 'center'
+			focus: True
+			on_text: root.strength_check()
+		
+		Label:
+			id: output
+			font_size: 32
+			

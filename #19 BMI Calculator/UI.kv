@@ -1,0 +1,62 @@
+<MyGrid>:
+	
+	GridLayout:
+		cols: 1
+		size: root.width, root.height
+	
+		GridLayout:
+			cols: 2
+			
+			Label:
+				text: "Select for Metric: "
+
+			CheckBox:
+				id: metric
+				group: "measurements"
+				on_active: root.clear()
+			Label: 
+				text: "Select for Imperial: "
+				
+			CheckBox:
+				id: imperial
+				group: "measurements"
+				on_active: root.clear()
+					
+			Label:
+				text: "Weight: "
+				font_size: 32
+			
+			Label:
+				id: weight_label
+				font_size: 32
+				multiline: True
+		
+		Slider:
+			id: weight_slide
+			min: 0
+			step: 1
+			on_value:
+				root.weight_display(*args)
+				root.calc(*args)
+		
+		GridLayout:
+			cols: 2
+			
+			Label:
+				text: "Height: "
+				font_size: 32
+			
+			Label:
+				id: height_label
+				font_size: 32
+		Slider:
+			id: height_slide
+			min: 0
+			on_value:
+				root.height_display(*args)
+				root.calc(*args)
+		
+		Label:
+			id: output
+			font_size: 32
+			multiline: True
